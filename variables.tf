@@ -3,6 +3,11 @@ variable "name" {
   description = "Lotator formation stack and lambda function will be created with this name."
 }
 
+variable "rotator_version" {
+  type        = string
+  description = "Rotator version"
+  default     = ""
+}
 
 variable "kms_key_arn" {
   type        = string
