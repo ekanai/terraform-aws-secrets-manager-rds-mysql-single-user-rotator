@@ -7,7 +7,7 @@ data "aws_serverlessapplicationrepository_application" "single_user_rotator" {
 resource "aws_serverlessapplicationrepository_cloudformation_stack" "rotate_stack" {
   name             = var.name
   application_id   = data.aws_serverlessapplicationrepository_application.single_user_rotator.application_id
-  semantic_version = data.aws_serverlessapplicationrepository_application.single_user_rotator.semantic_version
+  semantic_version = var.rotator_version == "" ? data.aws_serverlessapplicationrepository_application.single_user_rotator.semantic_version : var.rotator_version
   capabilities     = data.aws_serverlessapplicationrepository_application.single_user_rotator.required_capabilities
 
   parameters = {
